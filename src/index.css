@@ -1,0 +1,251 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: "Protest Riot", sans-serif;
+  font-weight: 400;
+  padding: 0;
+  color: #fefefe;
+  background-color: #09032b;
+}
+
+.glow-border {
+  position: relative;
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.glow-border::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: 0 0 80px #ff007f;
+  z-index: -1;
+}
+
+li:hover {
+  text-decoration: underline;
+  color: #ff007f;
+}
+.left:hover {
+  cursor: default;
+  color: #ff007f;
+}
+
+.container1 {
+  padding: 10px 40px;
+  position: relative;
+  width: 50%;
+  background-color: #ff007f;
+}
+
+.text-box {
+  padding: 20px 30px;
+  background-color: #09032b;
+  color: #ff007f;
+  position: relative;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+.left-container {
+  left: 0;
+}
+.right-container {
+  left: 50%;
+}
+
+.head {
+  padding-top: 10px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.container1 img {
+  position: absolute;
+  width: 40px;
+  border-radius: 50%;
+  right: -5%;
+  top: 32px;
+  z-index: 10p;
+}
+
+.right-container img {
+  left: -3%;
+}
+
+.timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 100px auto;
+}
+
+.timeline::after {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 100%;
+  background: #fff; /* Use background-color instead of color */
+  top: 0;
+  left: 50%;
+  margin-left: -3px;
+  z-index: -1;
+}
+
+.container3 {
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 768px) {
+  .container3 {
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 992px) {
+  .container3 {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container3 {
+    max-width: 1140px;
+  }
+}
+@media (min-width: 1400px) {
+  .container3 {
+    max-width: 1350px;
+  }
+}
+
+.section_title p {
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #22d3ee;
+}
+
+.section_title h2 {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.5;
+  text-transform: capitalize; /* Corrected 'captialize' to 'capitalize' */
+  color: #ff007f;
+}
+
+.section_title.center {
+  text-align: center;
+}
+
+.experience-section {
+  padding: 65px 0 100px;
+  background-color: #09032b;
+  position: relative;
+}
+
+.experience-section .experience-items {
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.experience-item {
+  flex: 0 0 48%;
+  max-width: 48%;
+}
+
+.experience-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.experience-info p {
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 22px;
+  opacity: 0; /* Initially hidden */
+  animation: showText 0.5s 1s linear forwards;
+}
+
+.progress-line {
+  margin-top: 7px;
+  height: 10px;
+  width: 100%;
+  background-color: #cdcdcd;
+  border-radius: 50px;
+  position: relative; /* Corrected 'ralative' to 'relative' */
+}
+
+.progress-line span {
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: animate 1s cubic-bezier(1, 0, 0.5, 1) forwards;
+  height: 100%;
+  border-radius: 50px;
+  position: absolute;
+  background-color: #ff007f;
+  transition: 1s all;
+}
+
+.progress-line span.animate {
+  animation: animate 1.5s 0.5s cubic-bezier(1, 0, 0.5, 1) forwards;
+}
+
+@keyframes showText {
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes animate {
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+/* Medium device styles */
+@media (max-width: 1024px) {
+  .experience-item {
+    flex: 0 0 48%;
+    max-width: 48%;
+  }
+}
+
+/* Small device styles */
+@media (max-width: 768px) {
+  .experience-item {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .experience-section {
+    padding: 50px 0 80px;
+  }
+
+  .section_title p {
+    font-size: 20px;
+  }
+
+  .section_title h2 {
+    font-size: 28px;
+  }
+
+  .experience-info p {
+    font-size: 14px;
+  }
+}
