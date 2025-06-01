@@ -2,7 +2,8 @@ import javascript from "../../public/javascript.png";
 import css from "../../public/css.jpg";
 import html from "../../public/html.png";
 import java from "../../public/java.png";
-import oracle from "../../public/oracle.png";
+// import oracle from "../../public/oracle.png";
+import mysql from "../../public/mysql.png";
 import mongodb from "../../public/mongodb.jpg";
 import python from "../../public/python.webp";
 
@@ -30,8 +31,8 @@ function Experience() {
     },
     {
       id: 5,
-      logo: oracle,
-      name: "oracle",
+      logo: mysql,
+      name: "My-Sql",
     },
     {
       id: 6,
@@ -57,7 +58,7 @@ function Experience() {
           </h1>
         </center>
         <p className="text-2xl" style={{ color: "#ff007f" }}>
-          I have 1 year of experrience in the below technologies
+          I am proficent in the below technologies
         </p>
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mt-8 my-3">
           {cardItem.map(({ id, logo, name }) => (

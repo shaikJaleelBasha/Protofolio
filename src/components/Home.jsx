@@ -25,7 +25,7 @@ function Home() {
               <span>
                 <ReactTyped
                   style={{ color: "#ff007f", fontWeight: "bold" }}
-                  strings={["UI/UX designer", "Web Developer", "Data Analyist"]}
+                  strings={[ "Full-Stack Web Developer", "React-Native Developer"]}
                   typeSpeed={40}
                   backSpeed={50}
                   loop={true}
@@ -36,11 +36,11 @@ function Home() {
             <p className="text-sm md:text-md text-justify">
               <h1>
                 Highly motivated and adaptable professional with a combined
-                skillset in web development, data analysis, and team leadership.
+                skillset in web development and team leadership.
               </h1>
               As a highly skilled Full Stack Developer, I bring a diverse set of
               expertise across the MERN stack, Python Full Stack development,
-              UX/UI design, and data analysis. My robust background allows me to
+              UX/UI design, and React-Native Developer. My robust background allows me to
               create dynamic, user-friendly applications and leverage
               data-driven insights to drive strategic decisions. Here is a brief
               overview of my core competencies:

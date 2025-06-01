@@ -1,8 +1,9 @@
 import { useState } from "react";
 import chat from "../../public/chat.png";
 import airline from "../../public/airline.png";
-import express from "../../public/express.png";
+// import express from "../../public/express.png";
 import java from "../../public/java.png";
+import springBoot from "../../public/springBoot.jpg";
 import node from "../../public/node.png";
 
 function Portfolio() {
@@ -20,18 +21,18 @@ function Portfolio() {
       logo: airline,
       name: "MERN Airline Booking",
     },
+    // {
+    //   id: 3,
+    //   logo: express,
+    //   name: "Hotel Booking",
+    // },
     {
       id: 3,
-      logo: express,
-      name: "Hotel Booking",
-    },
-    {
-      id: 4,
-      logo: java,
+      logo: springBoot,
       name: "E-commerce",
     },
     {
-      id: 5,
+      id: 4,
       logo: node,
       name: "Movie Recommendation",
     },

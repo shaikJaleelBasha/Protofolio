@@ -42,7 +42,7 @@ function Navbar() {
             <h1 className="text-xl cursor-pointer">
               JALEEL
               <span className="text-cyan-400 text-2xl"> SK</span>
-              <p className="text-sm">Web Developer</p>
+              <p className="text-sm">Web&Mobile Developer</p>
             </h1>
           </div>
           {/* desktop navbar */}
