@@ -29,7 +29,7 @@ function Education() {
               </h1>
             </center>
             <small>-kl unversity</small>
-            <p style={{ color: "#ff007f" }}>cgpa: 9.02</p>
+            <p style={{ color: "#ff007f" }}>cgpa: 9.14</p>
           </div>
         </VerticalTimelineElement>
 
