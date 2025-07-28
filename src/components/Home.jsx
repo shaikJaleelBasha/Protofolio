@@ -4,7 +4,11 @@ import { FaLinkedin } from "react-icons/fa";
 import { FaTelegram } from "react-icons/fa";
 import { IoLogoWhatsapp } from "react-icons/io";
 import { FaDiscord } from "react-icons/fa6";
+<<<<<<< HEAD
 import { SiMongodb } from "react-icons/si";
+=======
+import { SiGit, SiMongodb, SiSpring } from "react-icons/si";
+>>>>>>> 16f971b ( all files updated)
 import { SiExpress } from "react-icons/si";
 import { FaReact } from "react-icons/fa";
 import { FaNode } from "react-icons/fa";
@@ -38,12 +42,18 @@ function Home() {
                 Highly motivated and adaptable professional with a combined
                 skillset in web development and team leadership.
               </h1>
+<<<<<<< HEAD
               As a highly skilled Full Stack Developer, I bring a diverse set of
               expertise across the MERN stack, Python Full Stack development,
               UX/UI design, and React-Native Developer. My robust background allows me to
               create dynamic, user-friendly applications and leverage
               data-driven insights to drive strategic decisions. Here is a brief
               overview of my core competencies:
+=======
+              Aspiring Software Developer with expertise in full-stack development, scalable web applications, and React Native development
+using JavaScript. Proficient in Java, React.js, and MongoDB. Passionate about building high-performance applications and
+solving complex problems, with proven success in optimizing application speed and enhancing user experience.
+>>>>>>> 16f971b ( all files updated)
             </p>
             <br />
             {/* social media icons */}
@@ -91,9 +101,16 @@ function Home() {
                 <h1 className="font-bold text-2xl">Currently Working on</h1>
                 <div className="flex space-x-5">
                   <SiMongodb className="text-xl md:text-3xl hover:scale-110 duration-200 rouded-full border-2px" />
+<<<<<<< HEAD
                   <SiExpress className="text-xl md:text-3xl hover:scale-110 duration-200 rouded-full border-2px" />
                   <FaReact className="text-xl md:text-3xl hover:scale-110 duration-200 rouded-full border-2px" />
                   <FaNode className="text-xl md:text-3xl hover:scale-110 duration-200 rouded-full border-2px" />
+=======
+                  <SiSpring className="text-xl md:text-3xl hover:scale-110 duration-200 rouded-full border-2px" />
+                  <FaReact className="text-xl md:text-3xl hover:scale-110 duration-200 rouded-full border-2px" />
+                  <SiGit className="text-xl md:text-3xl hover:scale-110 duration-200 rounded-full border-2" />
+
+>>>>>>> 16f971b ( all files updated)
                 </div>
               </div>
             </div>

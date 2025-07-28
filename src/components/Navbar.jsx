@@ -1,4 +1,5 @@
 import { useState } from "react";
+<<<<<<< HEAD
 import pic from "../../public/photo.avif";
 import { MdOutlineMenu } from "react-icons/md";
 import { RxCross1 } from "react-icons/rx";
@@ -27,10 +28,26 @@ function Navbar() {
       id: 5,
       item: "Contact",
     },
+=======
+import { MdOutlineMenu } from "react-icons/md";
+import { RxCross1 } from "react-icons/rx";
+import { Link as ScrollLink } from "react-scroll";
+
+function Navbar() {
+  const [menu, setMenu] = useState(false);
+
+  const navLinks = [
+    { label: "Home", to: "home" },
+    { label: "Education", to: "education" },
+    { label: "Projects", to: "projects" },
+    { label: "Experience", to: "experience" },
+    { label: "Contact", to: "contact" },
+>>>>>>> 16f971b ( all files updated)
   ];
 
   return (
     <div className="relative">
+<<<<<<< HEAD
       <div className="max-w-screen-2xl container mx-auto px-4 md:px-20 h-16 shadow-md fixed top-0 left-0 right-0 z-50">
         <div className="flex justify-between items-center h-18">
           <div className="flex space-x-2 items-center">
@@ -95,6 +112,66 @@ function Navbar() {
         {/* Adjust the margin top to avoid overlapping */}
         {/* Content below the Navbar */}
       </div>
+=======
+      {/* Navbar Container */}
+      <div className="w-full px-4 md:px-20 h-16 shadow-md fixed top-0 left-0 right-0 z-50 bg-[#0f0c29] text-white">
+        <div className="flex justify-between items-center h-16">
+          {/* Logo */}
+          <div className="flex items-center space-x-2">
+            <img src="/photo.avif" alt="Profile" className="h-12 w-12 rounded-full" />
+            <div>
+              <h1 className="text-xl">
+                JALEEL<span className="text-cyan-400 text-2xl"> SK</span>
+              </h1>
+              <p className="text-sm">Web & Mobile Developer</p>
+            </div>
+          </div>
+
+          {/* Desktop Nav */}
+          <ul className="hidden md:flex space-x-10">
+            {navLinks.map((link) => (
+              <li key={link.to} className="text-xl capitalize cursor-pointer hover:text-cyan-400">
+                <ScrollLink
+                  to={link.to}
+                  smooth={true}
+                  duration={500}
+                  offset={-70}
+                >
+                  {link.label}
+                </ScrollLink>
+              </li>
+            ))}
+          </ul>
+
+          {/* Mobile Toggle */}
+          <div onClick={() => setMenu(!menu)} className="md:hidden cursor-pointer">
+            {menu ? <RxCross1 size={24} className="text-white" /> : <MdOutlineMenu size={24} className="text-white" />}
+          </div>
+        </div>
+
+        {/* Mobile Menu */}
+        {menu && (
+          <ul className="md:hidden flex flex-col h-screen items-center justify-center bg-[#0f0c29] text-white fixed top-0 left-0 right-0 z-40 space-y-6">
+            {navLinks.map((link) => (
+              <li key={link.to} className="text-2xl capitalize cursor-pointer">
+                <ScrollLink
+                  onClick={() => setMenu(false)}
+                  to={link.to}
+                  smooth={true}
+                  duration={500}
+                  offset={-70}
+                >
+                  {link.label}
+                </ScrollLink>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+
+      {/* Offset for fixed navbar */}
+      <div className="mt-16" />
+>>>>>>> 16f971b ( all files updated)
     </div>
   );
 }
