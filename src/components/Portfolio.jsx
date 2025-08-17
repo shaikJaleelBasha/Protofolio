@@ -1,38 +1,35 @@
 import { useState } from "react";
+import airline from "../assets/airline.png";
+import springBoot from "../assets/springBoot.jpg";
+import reactNative from "../assets/react_native.png";
 
 function Portfolio() {
   const [popupContent, setPopupContent] = useState(null);
   const [isAdmin] = useState(true); // Simplified for now
 
+  // For managing hover on buttons and cards
+  const [hoveredCard, setHoveredCard] = useState(null);
+  const [hoveredButton, setHoveredButton] = useState(null);
+
   const cardItem = [
-    // {
-    //   id: 1,
-    //   logo: "/chat.png",
-    //   name: "Django Chat Application",
-    // },
     {
       id: 2,
-      logo: "/airline.png",
-      name: "E-commerce ",
-      des: "this mern based ecom app"
+      logo: airline,
+      name: "E-commerce",
+      des: "This MERN based e-commerce app.",
     },
     {
       id: 3,
-      logo: "/springBoot.jpg",
+      logo: springBoot,
       name: "E-commerce (Spring Boot)",
-      des:"this is backend app"
+      des: "This is backend app.",
     },
     {
       id: 4,
-      logo:"/react_native.png",
-      name: "Food Receipe App",
-      des:"this is food receipe app where user can find the recipe he wants"
-    }
-    // {
-    //   id: 4,
-    //   logo: "/node.png",
-    //   name: "Movie Recommendation (Node.js)",
-    // },
+      logo: reactNative,
+      name: "Food Recipe App",
+      des: "User can find the recipe they want.",
+    },
   ];
 
   const handleButtonClick = (content) => {
@@ -47,46 +44,213 @@ function Portfolio() {
     setPopupContent(null);
   };
 
+  // Styles
+  const containerStyle = {
+    maxWidth: "1440px",
+    margin: "10px auto",
+    padding: "0 16px",
+  };
+
+  const centerStyle = {
+    textAlign: "center",
+  };
+
+  const titleStyle = {
+    fontSize: "1.875rem", // text-3xl
+    fontWeight: "700",
+    marginBottom: "20px",
+    color: "#22d3ee", // cyan-400
+  };
+
+  const subtitleStyle = {
+    fontSize: "1.5rem", // text-2xl
+    textDecoration: "underline",
+    color: "#ec4899", // pink-500
+    marginBottom: "32px",
+  };
+
+  const gridStyle = {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+    gap: "32px",
+    marginTop: "32px",
+    marginBottom: "20px",
+  };
+
+  const cardStyle = (isHovered) => ({
+    width: "300px",
+    height: "380px",
+    border: "2px solid transparent",
+    padding: "16px",
+    borderRadius: "12px",
+    boxShadow: "0 10px 15px rgba(0,0,0,0.1)",
+    backgroundColor: "#0f0c29",
+    cursor: "pointer",
+    transform: isHovered ? "scale(1.05)" : "scale(1)",
+    transition: "transform 0.3s",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+  });
+
+  const imgWrapperStyle = {
+    display: "flex",
+    justifyContent: "center",
+  };
+
+  const imgStyle = {
+    width: "120px",
+    height: "120px",
+    padding: "4px",
+    borderRadius: "50%",
+    border: "2px solid #d4d4d8", // gray-300 border color
+    objectFit: "cover",
+    backgroundColor: "white",
+  };
+
+  const cardTextWrapperStyle = {
+    marginTop: "16px",
+    textAlign: "center",
+  };
+
+  const cardTitleStyle = {
+    fontSize: "1.25rem", // text-xl
+    fontWeight: "700",
+    color: "#db2777", // pink-600
+    marginBottom: "8px",
+  };
+
+  const cardDescriptionStyle = {
+    fontSize: "0.875rem",
+    padding: "0 8px",
+    color: "#e5e7eb", // gray-200 for better contrast on dark bg
+  };
+
+  const buttonGroupStyle = {
+    marginTop: "24px",
+    display: "flex",
+    justifyContent: "space-around",
+  };
+
+  const buttonBaseStyle = {
+    color: "white",
+    padding: "8px 16px",
+    borderRadius: "8px",
+    border: "none",
+    fontWeight: "600",
+    cursor: "pointer",
+    transition: "background-color 0.3s",
+    minWidth: "100px",
+  };
+
+  const videoButtonStyle = (isHovered) => ({
+    ...buttonBaseStyle,
+    backgroundColor: isHovered ? "#0e7490" : "#06b6d4", // cyan-600 / cyan-500
+  });
+
+  const sourceButtonStyle = (isHovered) => ({
+    ...buttonBaseStyle,
+    backgroundColor: isHovered ? "#be185d" : "#db2777", // pink-600 / pink-500
+  });
+
+  const popupOverlayStyle = {
+    position: "fixed",
+    inset: 0,
+    backgroundColor: "rgba(0,0,0,0.6)",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: 50,
+  };
+
+  const popupContentStyle = {
+    backgroundColor: "#09032b",
+    padding: "24px",
+    borderRadius: "12px",
+    boxShadow: "0 10px 15px rgba(0,0,0,0.25)",
+    maxWidth: "400px",
+    width: "90%",
+    textAlign: "center",
+  };
+
+  const popupTitleStyle = {
+    fontSize: "1.5rem",
+    fontWeight: "700",
+    marginBottom: "16px",
+    color: "#22d3ee",
+  };
+
+  const popupTextStyle = {
+    fontSize: "1rem",
+    color: "#374151",
+  };
+
+  const popupButtonStyle = (isHovered) => ({
+    marginTop: "24px",
+    padding: "8px 24px",
+    backgroundColor: isHovered ? "#b91c1c" : "#ef4444", // red-600 / red-500
+    color: "white",
+    borderRadius: "8px",
+    border: "none",
+    cursor: "pointer",
+    fontWeight: "600",
+    transition: "background-color 0.3s",
+  });
+
+  const hrStyle = {
+    borderTop: "2px solid #d1d5db", // gray-300
+    margin: "24px 0",
+  };
+
   return (
-    <div
-      name="portfolio"
-      className="max-w-screen-2xl container mx-auto px-4 md:px-20 mt-10"
-    >
+    <div style={containerStyle} name="portfolio">
       <div>
         <center>
-          <h1 className="text-3xl font-bold mb-5 text-cyan-400">Portfolio</h1>
+          <h1 style={titleStyle}>Portfolio</h1>
         </center>
-        <h2 className="text-2xl underline text-pink-500">Featured Projects</h2>
+        <h2 style={subtitleStyle}>Featured Projects</h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mt-8 my-5">
+        <div style={gridStyle}>
           {cardItem.map(({ id, logo, name, des }) => (
             <div
               key={id}
-              className="md:w-[300px] md:h-[380px] border-[2px] p-4 rounded-lg shadow-lg cursor-pointer hover:scale-105 transition-transform duration-300 bg-[#0f0c29]"
+              style={cardStyle(hoveredCard === id)}
+              onMouseEnter={() => setHoveredCard(id)}
+              onMouseLeave={() => setHoveredCard(null)}
             >
-              <div className="flex justify-center">
+              <div style={imgWrapperStyle}>
                 <img
                   src={logo}
-                  alt={name}
-                  className="w-[120px] h-[120px] p-1 rounded-full border-[2px] object-cover"
+                  alt={`${name} project logo`}
+                  style={imgStyle}
                 />
               </div>
-              <div className="mt-4 text-center">
-                <h3 className="text-xl font-bold text-pink-600 mb-2">{name}</h3>
-                <p className="text-sm px-2">
-                 {des}
-                </p>
+              <div style={cardTextWrapperStyle}>
+                <h3 style={cardTitleStyle}>{name}</h3>
+                <p style={cardDescriptionStyle}>{des}</p>
               </div>
-              <div className="mt-6 flex justify-around">
+              <div style={buttonGroupStyle}>
                 <button
-                  onClick={() => handleButtonClick("Video Content")}
-                  className="bg-cyan-500 text-white py-2 px-4 rounded hover:bg-cyan-600 transition duration-300"
+                  onClick={() =>
+                    handleButtonClick(`Video for ${name} coming soon!`)
+                  }
+                  style={videoButtonStyle(
+                    hoveredButton === `${id}-video`
+                  )}
+                  onMouseEnter={() => setHoveredButton(`${id}-video`)}
+                  onMouseLeave={() => setHoveredButton(null)}
                 >
                   Video
                 </button>
                 <button
-                  onClick={() => handleButtonClick("Source Code Content")}
-                  className="bg-pink-500 text-white py-2 px-4 rounded hover:bg-pink-600 transition duration-300"
+                  onClick={() =>
+                    handleButtonClick(`Source code for ${name} coming soon!`)
+                  }
+                  style={sourceButtonStyle(
+                    hoveredButton === `${id}-source`
+                  )}
+                  onMouseEnter={() => setHoveredButton(`${id}-source`)}
+                  onMouseLeave={() => setHoveredButton(null)}
                 >
                   Source Code
                 </button>
@@ -97,15 +261,15 @@ function Portfolio() {
       </div>
 
       {popupContent && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 z-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full text-center">
-            <h2 className="text-2xl font-bold mb-4 text-cyan-600">
-              Admin Access
-            </h2>
-            <p className="text-gray-700">{popupContent}</p>
+        <div style={popupOverlayStyle}>
+          <div style={popupContentStyle}>
+            <h2 style={popupTitleStyle}>Admin Access</h2>
+            <p style={popupTextStyle}>{popupContent}</p>
             <button
               onClick={closePopup}
-              className="mt-6 bg-red-500 text-white py-2 px-6 rounded hover:bg-red-600 transition duration-300"
+              style={popupButtonStyle(false)}
+              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#b91c1c")}
+              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#ef4444")}
             >
               Close
             </button>
@@ -113,7 +277,7 @@ function Portfolio() {
         </div>
       )}
 
-      <hr className="border-t-2 border-gray-300 my-6" />
+      <hr style={hrStyle} />
     </div>
   );
 }

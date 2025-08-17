@@ -1,3 +1,4 @@
+/* Container styles */
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -5,38 +6,62 @@
   text-align: center;
 }
 
+/* Logo styles */
 .logo {
   height: 6em;
   padding: 1.5em;
+  transition: filter 300ms ease;
   will-change: filter;
-  transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
+/* Animation for rotating the React logo */
 @keyframes logo-spin {
-  from {
+  0% {
     transform: rotate(0deg);
   }
-  to {
+  100% {
     transform: rotate(360deg);
   }
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
+  .logo-spin {
     animation: logo-spin infinite 20s linear;
   }
 }
 
+/* Card box style */
 .card {
   padding: 2em;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  background-color: #ffffff;
+  margin-bottom: 2rem;
 }
 
+/* Muted text */
 .read-the-docs {
-  color: #888;
+  color: #888888;
+  font-size: 0.9rem;
+}
+
+/* Responsive image for avatars or photos */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Add some spacing for sections */
+section {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
 }

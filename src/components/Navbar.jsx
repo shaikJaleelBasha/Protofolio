@@ -1,178 +1,210 @@
-import { useState } from "react";
-<<<<<<< HEAD
-import pic from "../../public/photo.avif";
-import { MdOutlineMenu } from "react-icons/md";
-import { RxCross1 } from "react-icons/rx";
-import { Link } from "react-scroll";
-
-function Navbar() {
-  const [menu, setMenu] = useState(false);
-  const navItems = [
-    {
-      id: 1,
-      item: "Home",
-    },
-    {
-      id: 2,
-      item: "About",
-    },
-    {
-      id: 3,
-      item: "Protofolio",
-    },
-    {
-      id: 4,
-      item: "Experience",
-    },
-    {
-      id: 5,
-      item: "Contact",
-    },
-=======
+import { useState, useEffect } from "react";
 import { MdOutlineMenu } from "react-icons/md";
 import { RxCross1 } from "react-icons/rx";
 import { Link as ScrollLink } from "react-scroll";
+import pic1 from "../assets/myphoto.png";
 
 function Navbar() {
   const [menu, setMenu] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [hoveredNav, setHoveredNav] = useState(null);
+  const [hoveredMobileNav, setHoveredMobileNav] = useState(null);
 
   const navLinks = [
     { label: "Home", to: "home" },
-    { label: "Education", to: "education" },
-    { label: "Projects", to: "projects" },
+    { label: "About", to: "about" },
+    { label: "Portfolio", to: "portfolio" },
     { label: "Experience", to: "experience" },
     { label: "Contact", to: "contact" },
->>>>>>> 16f971b ( all files updated)
   ];
 
+  useEffect(() => {
+    function handleResize() {
+      setWindowWidth(window.innerWidth);
+      if (window.innerWidth >= 768) setMenu(false);
+    }
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Styles
+  const navStyle = {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: "#0a0020",
+    boxShadow: "0 2px 4px rgba(0,0,0,0.3)",
+    zIndex: 1000,
+  };
+
+  // Container centered, no side padding here to avoid side gap on mobile fullscreen menu
+  const containerStyle = {
+    maxWidth: "1440px",
+    margin: "0 auto",
+    height: "64px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingLeft: "24px",
+    paddingRight: "24px",
+  };
+
+  const leftSectionStyle = {
+    display: "flex",
+    alignItems: "center",
+    gap: "12px",
+  };
+
+  const profileImgStyle = {
+    height: "48px",
+    width: "48px",
+    borderRadius: "50%",
+    objectFit: "cover",
+  };
+
+  const nameWrapperStyle = {
+    lineHeight: 1,
+  };
+
+  const nameStyle = {
+    color: "white",
+    fontSize: "1.25rem",
+    fontWeight: "700",
+    fontFamily: "'Brush Script MT', cursive",
+    margin: 0,
+  };
+
+  const cyanTextStyle = {
+    color: "#22d3ee",
+  };
+
+  const subtitleStyle = {
+    color: "white",
+    fontSize: "0.75rem",
+    fontFamily: "'Brush Script MT', cursive",
+    margin: 0,
+  };
+
+  const desktopNavStyle = {
+    display: "flex",
+    gap: "40px",
+  };
+
+  const desktopNavItemStyle = {
+    color: "white",
+    cursor: "pointer",
+    fontFamily: "'Brush Script MT', cursive",
+    fontSize: "1.125rem",
+    transition: "color 0.3s",
+    userSelect: "none",
+  };
+
+  const mobileToggleStyle = {
+    color: "white",
+    cursor: "pointer",
+    display: "block",
+  };
+
+  const mobileMenuStyle = {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    width: "100%",       // FULL width of viewport
+    height: "100vh",     // FULL height of viewport
+    backgroundColor: "#0a0020",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: "40px",
+    zIndex: 2000,
+    padding: 0,          // NO padding to avoid gap
+    margin: 0,           // NO margin to avoid gap
+    overflow: "hidden",  // avoid scroll
+  };
+
+  const mobileNavItemStyle = {
+    color: "white",
+    cursor: "pointer",
+    fontSize: "2rem",
+    fontFamily: "'Brush Script MT', cursive",
+    transition: "color 0.3s",
+    userSelect: "none",
+  };
+
   return (
-    <div className="relative">
-<<<<<<< HEAD
-      <div className="max-w-screen-2xl container mx-auto px-4 md:px-20 h-16 shadow-md fixed top-0 left-0 right-0 z-50">
-        <div className="flex justify-between items-center h-18">
-          <div className="flex space-x-2 items-center">
-            <img
-              src={pic}
-              alt=""
-              className="h-12 w-12 rounded-full space-y-3"
-            />
-            <h1 className="text-xl cursor-pointer">
-              JALEEL
-              <span className="text-cyan-400 text-2xl"> SK</span>
-              <p className="text-sm">Web&Mobile Developer</p>
+    <nav style={navStyle}>
+      <div style={containerStyle}>
+        <div style={leftSectionStyle}>
+          <img src={pic1} alt="Profile" style={profileImgStyle} />
+          <div style={nameWrapperStyle}>
+            <h1 style={nameStyle}>
+              JALEEL <span style={cyanTextStyle}>SK</span>
             </h1>
-          </div>
-          {/* desktop navbar */}
-          <div>
-            <ul className="hidden md:flex space-x-10 cursor-pointer">
-              {navItems.map(({ id, item }) => (
-                <li className="hover:scale-105 duration-200 text-xl" key={id}>
-                  <Link
-                    to={item}
-                    smooth={true}
-                    duration={500}
-                    offset={-70}
-                    activeClass="active"
-                  >
-                    {item}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <div onClick={() => setMenu(!menu)} className="md:hidden">
-              {menu ? <RxCross1 size={24} /> : <MdOutlineMenu size={24} />}
-            </div>
+            <p style={subtitleStyle}>Web & Mobile Developer</p>
           </div>
         </div>
 
-        {/* mobile navbar */}
-        {menu && (
-          <div>
-            <ul className="md:hidden flex flex-col h-screen items-center justify-center cursor-pointer  space-y-4">
-              {navItems.map(({ id, item }) => (
-                <li key={id} className="hover:scale-105 duration-200 text-2xl">
-                  <Link
-                    onClick={() => setMenu(!menu)}
-                    to={item}
-                    smooth={true}
-                    duration={500}
-                    offset={-70}
-                    activeClass="active"
-                  >
-                    {item}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-      </div>
-      <div className="mt-16">
-        {" "}
-        {/* Adjust the margin top to avoid overlapping */}
-        {/* Content below the Navbar */}
-      </div>
-=======
-      {/* Navbar Container */}
-      <div className="w-full px-4 md:px-20 h-16 shadow-md fixed top-0 left-0 right-0 z-50 bg-[#0f0c29] text-white">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <img src="/photo.avif" alt="Profile" className="h-12 w-12 rounded-full" />
-            <div>
-              <h1 className="text-xl">
-                JALEEL<span className="text-cyan-400 text-2xl"> SK</span>
-              </h1>
-              <p className="text-sm">Web & Mobile Developer</p>
-            </div>
-          </div>
-
-          {/* Desktop Nav */}
-          <ul className="hidden md:flex space-x-10">
-            {navLinks.map((link) => (
-              <li key={link.to} className="text-xl capitalize cursor-pointer hover:text-cyan-400">
-                <ScrollLink
-                  to={link.to}
-                  smooth={true}
-                  duration={500}
-                  offset={-70}
-                >
-                  {link.label}
-                </ScrollLink>
-              </li>
-            ))}
-          </ul>
-
-          {/* Mobile Toggle */}
-          <div onClick={() => setMenu(!menu)} className="md:hidden cursor-pointer">
-            {menu ? <RxCross1 size={24} className="text-white" /> : <MdOutlineMenu size={24} className="text-white" />}
-          </div>
-        </div>
-
-        {/* Mobile Menu */}
-        {menu && (
-          <ul className="md:hidden flex flex-col h-screen items-center justify-center bg-[#0f0c29] text-white fixed top-0 left-0 right-0 z-40 space-y-6">
-            {navLinks.map((link) => (
-              <li key={link.to} className="text-2xl capitalize cursor-pointer">
-                <ScrollLink
-                  onClick={() => setMenu(false)}
-                  to={link.to}
-                  smooth={true}
-                  duration={500}
-                  offset={-70}
-                >
-                  {link.label}
+        {windowWidth >= 768 && (
+          <ul style={desktopNavStyle}>
+            {navLinks.map(({ to, label }) => (
+              <li
+                key={to}
+                style={{
+                  ...desktopNavItemStyle,
+                  color: hoveredNav === to ? "#22d3ee" : "white",
+                }}
+                onMouseEnter={() => setHoveredNav(to)}
+                onMouseLeave={() => setHoveredNav(null)}
+              >
+                <ScrollLink to={to} smooth duration={500} offset={-64}>
+                  {label}
                 </ScrollLink>
               </li>
             ))}
           </ul>
         )}
+
+        {windowWidth < 768 && (
+          <div
+            onClick={() => setMenu(!menu)}
+            style={mobileToggleStyle}
+            aria-label="Toggle Menu"
+          >
+            {menu ? <RxCross1 size={28} /> : <MdOutlineMenu size={28} />}
+          </div>
+        )}
       </div>
 
-      {/* Offset for fixed navbar */}
-      <div className="mt-16" />
->>>>>>> 16f971b ( all files updated)
-    </div>
+      {menu && windowWidth < 768 && (
+        <ul style={mobileMenuStyle}>
+          {navLinks.map(({ to, label }) => (
+            <li
+              key={to}
+              style={{
+                ...mobileNavItemStyle,
+                color: hoveredMobileNav === to ? "#22d3ee" : "white",
+              }}
+              onMouseEnter={() => setHoveredMobileNav(to)}
+              onMouseLeave={() => setHoveredMobileNav(null)}
+            >
+              <ScrollLink
+                to={to}
+                smooth
+                duration={500}
+                offset={-64}
+                onClick={() => setMenu(false)}
+              >
+                {label}
+              </ScrollLink>
+            </li>
+          ))}
+        </ul>
+      )}
+    </nav>
   );
 }
 

@@ -1,23 +1,27 @@
-import  { useState } from 'react';
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-import axios from 'axios';
+import axios from "axios";
 
 function Contact() {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
   const [popupContent, setPopupContent] = useState(null);
 
   const onSubmit = async (data) => {
-    console.log(data);
     const userInfo = {
       name: data.name,
       email: data.email,
-      message: data.message
+      message: data.message,
     };
     try {
-      await axios.post('https://getform.io/f/pamqwpna', userInfo);
+      await axios.post("https://getform.io/f/pamqwpna", userInfo);
       setPopupContent("Your message has been sent successfully!");
     } catch (error) {
-      console.log(error);
+      console.error(error);
       setPopupContent("Failed to send the message. Please try again.");
     }
   };
@@ -26,72 +30,264 @@ function Contact() {
     setPopupContent(null);
   };
 
+  // Styles
+  const containerStyle = {
+    maxWidth: "1440px",
+    margin: "10px auto 64px auto",
+    padding: "0 16px 0 16px",
+  };
+
+  const headerStyle = {
+    textAlign: "center",
+    marginBottom: 0,
+  };
+
+  const titleStyle = {
+    fontSize: "2.25rem",
+    fontWeight: "700",
+    color: "#22d3ee", // cyan-400
+    marginBottom: "8px",
+  };
+
+  const subtitleStyle = {
+    fontSize: "1rem",
+    color: "#ec4899", // pink-500
+    marginTop: 0,
+  };
+
+  const formWrapperStyle = {
+    display: "flex",
+    justifyContent: "center",
+    marginTop: "40px",
+  };
+
+  const formStyle = {
+    width: "100%",
+    maxWidth: "400px",
+    padding: "32px",
+    backgroundColor: "#09032b",
+    border: "2px solid #22d3ee", // cyan-300
+    borderRadius: "12px",
+    boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
+  };
+
+  const formTitleStyle = {
+    fontSize: "1.25rem",
+    fontWeight: "600",
+    marginBottom: "24px",
+    color: "#db2777", // pink-600
+    textAlign: "center",
+  };
+
+  const labelStyle = {
+    display: "block",
+    marginBottom: "8px",
+    fontSize: "0.875rem",
+    fontWeight: "500",
+    color: "#4b5563", // gray-700
+  };
+
+  const inputStyle = {
+    width: "100%",
+    padding: "12px",
+    borderRadius: "6px",
+    border: "1px solid #d1d5db", // gray-300
+    fontSize: "1rem",
+    outline: "none",
+    transition: "border-color 0.3s, box-shadow 0.3s",
+  };
+
+  const inputFocusStyle = {
+    borderColor: "#22d3ee",
+    boxShadow: "0 0 0 2px #22d3ee",
+  };
+
+  const textareaStyle = {
+    ...inputStyle,
+    resize: "none",
+    minHeight: "120px",
+  };
+
+  const errorTextStyle = {
+    color: "#ef4444", // red-500
+    fontSize: "0.875rem",
+    marginTop: "4px",
+  };
+
+  const buttonStyle = {
+    width: "100%",
+    padding: "12px 0",
+    background: "linear-gradient(to right, #06b6d4, #3b82f6)", // cyan-500 to blue-500
+    color: "white",
+    fontWeight: "600",
+    borderRadius: "9999px",
+    border: "none",
+    cursor: "pointer",
+    transition: "background 0.3s",
+    fontSize: "1rem",
+  };
+
+  const buttonHoverStyle = {
+    background: "linear-gradient(to right, #0e7490, #2563eb)", // cyan-600 to blue-600
+  };
+
+  const popupOverlayStyle = {
+    position: "fixed",
+    inset: 0,
+    backgroundColor: "rgba(0,0,0,0.5)",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: 50,
+  };
+
+  const popupContentStyle = {
+    backgroundColor: "#09032b",
+    padding: "24px",
+    borderRadius: "16px",
+    boxShadow: "0 10px 15px rgba(0,0,0,0.25)",
+    width: "320px",
+    textAlign: "center",
+  };
+
+  const popupTitleStyle = {
+    fontSize: "1.25rem",
+    fontWeight: "700",
+    color: "#22d3ee",
+    marginBottom: "12px",
+  };
+
+  const popupTextStyle = {
+    color: "#374151", // gray-700
+    fontSize: "1rem",
+  };
+
+  const popupButtonStyle = {
+    marginTop: "24px",
+    padding: "8px 24px",
+    backgroundColor: "#db2777", // pink-500
+    color: "white",
+    borderRadius: "9999px",
+    border: "none",
+    cursor: "pointer",
+    fontWeight: "600",
+    transition: "background-color 0.3s",
+  };
+
+  const popupButtonHoverStyle = {
+    backgroundColor: "#be185d", // pink-600
+  };
+
+  // Handle focus styling manually (since inline styles don't support :focus)
+  const [focusedInput, setFocusedInput] = useState(null);
+  const [isPopupBtnHovered, setIsPopupBtnHovered] = useState(false);
+  const [isSubmitBtnHovered, setIsSubmitBtnHovered] = useState(false);
+
   return (
     <>
-      <div name="Contact" className="max-w-screen-2xl container mx-auto px-4 md:px-20 mt-10 my-16">
-        <h1 className="text-3xl font-bold mb-4" style={{ color: '#22d3ee' }}>Contact me</h1>
-        <span style={{ color: "#ff007f" }}>Please fill out the form below to contact me</span>
-        <div className="flex flex-col items-center justify-center mt-10">
-          <form onSubmit={handleSubmit(onSubmit)} className="w-96 px-8 py-6 rounded-xl border-[2px]">
-            <h1 className="text-xl font-semibold mb-4" style={{ color: "#ff007f" }}>Send Your Message</h1>
-            <div className="flex flex-col mb-4">
-              <label className="block">Full Name</label>
+      <div style={containerStyle} name="contact">
+        <div style={headerStyle}>
+          <h1 style={titleStyle}>Contact Me</h1>
+          <p style={subtitleStyle}>Please fill out the form below to get in touch.</p>
+        </div>
+
+        <div style={formWrapperStyle}>
+          <form onSubmit={handleSubmit(onSubmit)} style={formStyle}>
+            <h2 style={formTitleStyle}>Send Your Message</h2>
+
+            {/* Name */}
+            <div style={{ marginBottom: "24px" }}>
+              <label style={labelStyle} htmlFor="name">
+                Full Name
+              </label>
               <input
-                name="name"
+                id="name"
                 type="text"
                 placeholder="Enter your full name"
-                style={{ color: "#ff007f" }}
-                className="shadow rounded-lg appearance-none border w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
-                {...register("name", { required: true })}
+                style={{
+                  ...inputStyle,
+                  ...(focusedInput === "name" ? inputFocusStyle : {}),
+                }}
+                {...register("name", { required: "Name is required" })}
+                onFocus={() => setFocusedInput("name")}
+                onBlur={() => setFocusedInput(null)}
               />
-              {errors.name && <span className="text-red-500">This field is required</span>}
+              {errors.name && <p style={errorTextStyle}>{errors.name.message}</p>}
             </div>
 
-            <div className="flex flex-col mb-4">
-              <label className="block">Email Address</label>
+            {/* Email */}
+            <div style={{ marginBottom: "24px" }}>
+              <label style={labelStyle} htmlFor="email">
+                Email Address
+              </label>
               <input
-                name="email"
+                id="email"
                 type="email"
                 placeholder="Enter your email"
-                style={{ color: "#ff007f" }}
-                className="shadow rounded-lg appearance-none border w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
+                style={{
+                  ...inputStyle,
+                  ...(focusedInput === "email" ? inputFocusStyle : {}),
+                }}
                 {...register("email", {
-                  required: "This field is required",
+                  required: "Email is required",
                   pattern: {
                     value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                    message: "Please enter a valid email address"
-                  }
+                    message: "Please enter a valid email address",
+                  },
                 })}
+                onFocus={() => setFocusedInput("email")}
+                onBlur={() => setFocusedInput(null)}
               />
-              {errors.email && <span className="text-red-500">{errors.email.message}</span>}
+              {errors.email && <p style={errorTextStyle}>{errors.email.message}</p>}
             </div>
 
-            <div className="flex flex-col mb-4">
-              <label className="block">Message</label>
+            {/* Message */}
+            <div style={{ marginBottom: "24px" }}>
+              <label style={labelStyle} htmlFor="message">
+                Message
+              </label>
               <textarea
-                name="message"
-                placeholder="Message me"
-                style={{ color: "#ff007f" }}
-                className="shadow rounded-lg appearance-none border w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
+                id="message"
+                placeholder="Write your message..."
                 rows="5"
-                {...register("message", { required: true })}
-              ></textarea>
-              {errors.message && <span className="text-red-500">This field is required</span>}
+                style={{
+                  ...textareaStyle,
+                  ...(focusedInput === "message" ? inputFocusStyle : {}),
+                }}
+                {...register("message", { required: "Message is required" })}
+                onFocus={() => setFocusedInput("message")}
+                onBlur={() => setFocusedInput(null)}
+              />
+              {errors.message && <p style={errorTextStyle}>{errors.message.message}</p>}
             </div>
 
-            <button type="submit" style={{ backgroundColor: '#22d3ee' }} className="rounded-xl px-3 py-2 text-white">
-              Send
-            </button>
+            {/* Submit Button */}
+            <div style={{ textAlign: "center" }}>
+              <button
+                type="submit"
+                style={isSubmitBtnHovered ? { ...buttonStyle, ...buttonHoverStyle } : buttonStyle}
+                onMouseEnter={() => setIsSubmitBtnHovered(true)}
+                onMouseLeave={() => setIsSubmitBtnHovered(false)}
+              >
+                Send Message
+              </button>
+            </div>
           </form>
         </div>
       </div>
 
+      {/* Popup Modal */}
       {popupContent && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <div className=" p-6 rounded-lg shadow-lg">
-            <h2 className="text-2xl font-bold mb-4">Success</h2>
-            <p>{popupContent}</p>
-            <button onClick={closePopup} className="mt-4 bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 transition duration-300">
+        <div style={popupOverlayStyle}>
+          <div style={popupContentStyle}>
+            <h2 style={popupTitleStyle}>Notification</h2>
+            <p style={popupTextStyle}>{popupContent}</p>
+            <button
+              onClick={closePopup}
+              style={isPopupBtnHovered ? { ...popupButtonStyle, ...popupButtonHoverStyle } : popupButtonStyle}
+              onMouseEnter={() => setIsPopupBtnHovered(true)}
+              onMouseLeave={() => setIsPopupBtnHovered(false)}
+            >
               Close
             </button>
           </div>

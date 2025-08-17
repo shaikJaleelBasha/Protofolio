@@ -1,10 +1,9 @@
-import { useState } from "react";
-import chat from "../../public/chat.png";
-import airline from "../../public/airline.png";
-// import express from "../../public/express.png";
-import java from "../../public/java.png";
-import springBoot from "../../public/springBoot.jpg";
-import node from "../../public/node.png";
+import chat from "../assets/chat.png";
+import airline from "../assets/airline.png";
+import java from "../assets/java.png";
+import springBoot from "../assets/springBoot.jpg";
+import node from "../assets/node.png";
+
 
 function Portfolio() {
   const [popupContent, setPopupContent] = useState(null);
